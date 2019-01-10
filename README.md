@@ -4,7 +4,7 @@ Utility script to make downloading, formatting, and pruning data downloaded from
 ## Use
 Using the script should be fairly straightforward. It uses the abseil app engine, so a few command line parameters are needed. Run the program like so:
 
-download_sparcs.py --output_dir OUTPUT_DIRECTORY --token API_TOKEN
+download_sparcs.py --output OUTPUT_DIRECTORY --token API_TOKEN
 
 where OUTPUT_DIRECTORY is where the program should save your files and API_TOKEN is your API token given to you by SPARCS. Getting and API token is free and easy. Go to the [official developer site](https://dev.socrata.com/docs/app-tokens.html) to learn more about registering your application and getting an API token.
 
