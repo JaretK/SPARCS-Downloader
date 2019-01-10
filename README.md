@@ -10,13 +10,15 @@ where OUTPUT_DIRECTORY is where the program should save your files and API_TOKEN
 
 By design, you need to set a few parameters within the download_sparcs.py file before it will filter the patient records. This is highly recommended since the files are large (100s of MB to > 1 GB per year). Within the file, add your Clinical Classification Software (CCS) procedure and diagnosis codes to the list (between the brackets with a comma between integers, no quotation marks are needed, hence the map(str... part):
 
+```python
 ccs_diag_codes = map(str, [])
 ccs_proc_codes = map(str, [])
-
+```
 and add your All Patient Refined Diagnosis Related Groups (APR-DRG) codes to:
 
+```python
 apr_drg_codes = map(str, [])
-
+```
 Thats it! Let her rip and enjoy your cleaned and processed files, ready for whatever clinical question you can think of. 
 
 
