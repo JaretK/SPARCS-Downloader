@@ -297,10 +297,10 @@ def additional_cleaning(df):
     #     df = df[df.type_of_admission != 'Newborn']
     #     df = df[df.type_of_admission != 'Not Available']
     # DO clean out dispositions
-    if "patient_disposition" in df.columns:
-        df = df[df.patient_disposition != "Left Against Medical Advice"]
-        df = df[df.patient_disposition != "Expired"]
-        df = df[df.patient_disposition != "Another Type Not Listed"]
+    # if "patient_disposition" in df.columns:
+    #     df = df[df.patient_disposition != "Left Against Medical Advice"]
+    #     df = df[df.patient_disposition != "Expired"]
+    #     df = df[df.patient_disposition != "Another Type Not Listed"]
     return df
 
 def load_all_patients(output_dir):
