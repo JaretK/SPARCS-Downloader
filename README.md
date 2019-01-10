@@ -8,7 +8,7 @@ download_sparcs.py --output OUTPUT_DIRECTORY --token API_TOKEN
 
 where OUTPUT_DIRECTORY is where the program should save your files and API_TOKEN is your API token given to you by SPARCS. Getting and API token is free and easy. Go to the [official developer site](https://dev.socrata.com/docs/app-tokens.html) to learn more about registering your application and getting an API token.
 
-By design, you need to set a few parameters within the download_sparcs.py file before it will filter the patient records. This is highly recommended since the files are large (100s of MB to > 1 GB per year). Within the file, add your Clinical Classification Software (CCS) procedure and diagnosis codes to the list (between the brackets with a comma between integers, no quotation marks are needed, hence the map(str... part):
+By design, you need to set a few parameters within the download_sparcs.py file before it will filter the patient records. This is highly recommended since the files are large (100s of MB to > 1 GB per year). Within the file, add your Clinical Classification Software (CCS) procedure and diagnosis codes to the list (Note: single digit codes, such as APR-DRG code for laminectomy [3] should be entered as '003' instead of '3'):
 
 ```python
 ccs_diag_codes = map(str, [])
