@@ -56,6 +56,24 @@ dataset_ids = [
     (2009, 's8d9-z734')
 ]
 
+
+def additional_cleaning(df):
+    # do NOT clean age group for this paper
+    # if "age_group" in df.columns:
+    #     df1 = df[df.age_group == "70 or Older"]
+    #     df2 = df[df.age_group == "50 to 69"]
+    #     df = pd.concat([df1,df2],ignore_index=True, axis=0, sort=False)
+    # do NOT clean admission for this paper
+    # if "type_of_admission" in df.columns:
+    #     df = df[df.type_of_admission != 'Newborn']
+    #     df = df[df.type_of_admission != 'Not Available']
+    # DO clean out dispositions
+    # if "patient_disposition" in df.columns:
+    #     df = df[df.patient_disposition != "Left Against Medical Advice"]
+    #     df = df[df.patient_disposition != "Expired"]
+    #     df = df[df.patient_disposition != "Another Type Not Listed"]
+    return df
+
 '''
 Download all the datasets in dataset_ids and return a list of pd dataframes
 '''
@@ -286,23 +304,6 @@ def removeOutliers(df, drop_lower=0.5, drop_upper=99.5):
     # df = df.query('{} > {}'.format(_LOS, LOS_llimit))
     return df
 
-def additional_cleaning(df):
-    # do NOT clean age group for this paper
-    # if "age_group" in df.columns:
-    #     df1 = df[df.age_group == "70 or Older"]
-    #     df2 = df[df.age_group == "50 to 69"]
-    #     df = pd.concat([df1,df2],ignore_index=True, axis=0, sort=False)
-    # do NOT clean admission for this paper
-    # if "type_of_admission" in df.columns:
-    #     df = df[df.type_of_admission != 'Newborn']
-    #     df = df[df.type_of_admission != 'Not Available']
-    # DO clean out dispositions
-    # if "patient_disposition" in df.columns:
-    #     df = df[df.patient_disposition != "Left Against Medical Advice"]
-    #     df = df[df.patient_disposition != "Expired"]
-    #     df = df[df.patient_disposition != "Another Type Not Listed"]
-    return df
-
 def load_all_patients(output_dir):
     df = pd.read_csv('%s/%s' % (output_dir, 'all_patients.csv'))
     return df
@@ -318,7 +319,7 @@ def main(argv):
     for i in range(len(pd_list)):
         print 'Saving %s...' % (dataset_ids[i][0])
         name = 'raw_%s.csv' % dataset_ids[i][0]
-        pd_list[i].to_csv('%s/%s' % (output_dir, name))
+        pd_list[i].to_csv('%s/%s' % (output_dir, name), index=False)
     print  'Downloaded and saved dataframes: %s. Running combine_dataframes()... ' % sum(x.shape[0] for x in pd_list)
     all_patients = combine_dataframes(pd_list)
     print 'Combined dataframes: %s. Running codeMedicare()... ' % sum(x.shape[0] for x in pd_list)
