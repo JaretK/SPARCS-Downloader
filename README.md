@@ -6,7 +6,7 @@ Using the script should be fairly straightforward. It uses the abseil app engine
 
 download_sparcs.py --output_dir OUTPUT_DIRECTORY --token API_TOKEN
 
-where OUTPUT_DIRECTORY is where the program should save your files and API_TOKEN is your API token given to you by SPARCS. Getting and API token is free and easy. Go to the (official developer site)[https://dev.socrata.com/docs/app-tokens.html] to learn more about registering your application and getting an API token.
+where OUTPUT_DIRECTORY is where the program should save your files and API_TOKEN is your API token given to you by SPARCS. Getting and API token is free and easy. Go to the [official developer site](https://dev.socrata.com/docs/app-tokens.html) to learn more about registering your application and getting an API token.
 
 By design, you need to set a few parameters within the download_sparcs.py file before it will filter the patient records. This is highly recommended since the files are large (100s of MB to > 1 GB per year). Within the file, add your Clinical Classification Software (CCS) procedure and diagnosis codes to the list (between the brackets with a comma between integers, no quotation marks are needed, hence the map(str... part):
 
