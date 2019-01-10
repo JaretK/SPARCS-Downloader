@@ -242,15 +242,23 @@ def combine_dataframes(pd_list):
 
 def adjustForInflation(df, column_input):
     # multiply cost in year by the multiplicative CPI rate according to the BLS
-    # From: https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=201601&year2=200901
+    # From: https://beta.bls.gov/dataViewer/view/timeseries/CUUR0000SAM
+    # CPI-All Urban Consumers (Current Series)		
+    # Series Title	:	Medical care in U.S. city average, all urban consumers, not seasonally adjusted
+    # Series ID	:	CUUR0000SAM
+    # Seasonality	:	Not Seasonally Adjusted
+    # Survey Name	:	CPI-All Urban Consumers (Current Series)
+    # Measure Data Type	:	Medical care
+    # Area	:	U.S. city average
+    # Item	:	Medical care
     inflationDictionary = {
-        "2016":0.89,
-        "2015":0.90,
-        "2014":0.90,
-        "2013":0.92,
-        "2012":0.93,
-        "2011":0.96,
-        "2010":0.97,
+        "2016":0.810,
+        "2015":0.841,
+        "2014":0.863,
+        "2013":0.884,
+        "2012":0.905,
+        "2011":0.938,
+        "2010":0.967,
         "2009":1.00
     }
     inflationList = [float(row[column_input])*inflationDictionary[str(row['discharge_year'])] for index,row in df.iterrows()]
